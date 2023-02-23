@@ -1,0 +1,42 @@
+The ``0-add_integer``module
+===========================
+
+Using ``add_integer``
+First import ``add_integer`` from the ``0-add_integer`` module
+>>> add_integer = __import__("0-add_integer").add_integer
+
+	and use it
+>>> add_integer(5, 2)
+	7
+>>> add_integer(2)
+	100
+>>> add_integer(5.10)
+	103
+	>>> a = [10, 5.99, 0, 50, -17, 20., -10.2]
+	>>> b = [0, 2, -5, -55, -2, -10., .5]
+	>>> result = [add_integer(a[i], b[i]) for i in range(7)]
+	>>> result
+	[10, 7, -5, -5, -19, 10, -10]
+	>>> add_integer("hair", 3)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+	>>> add_integer(False, 3)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+	>>> add_integer(4, "4")
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+
+	test for NaN
+	>>> add_integer(float("nan"), 5)
+	Traceback (most recent call last):
+	        ...
+	ValueError: cannot convert float NaN to integer
+
+	>>> add_integer(float("1.7e+400"))
+	Traceback (most recent call last):
+		...
+	OverflowError: cannot convert float infinity to integer

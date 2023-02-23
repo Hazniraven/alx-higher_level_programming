@@ -1,0 +1,109 @@
+The ``101-lazy_matrix_mul`` module
+=============================
+
+Using ``lazy_matrix_mul``
+--------------------
+
+First import the function ``lazy_matrix_mul`` from the module ``100-lazy_matrix_mul``
+>>> lazy_matrix_mul = __import__("101-lazy_matrix_mul").lazy_matrix_mul
+
+	and use it
+>>> lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+	[[7, 10], [15, 22]]
+>>> lazy_matrix_mul([[2, 5, 6]], [[3], [4], [-5]])
+	[[-4]]
+>>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+	[[13, 16]]
+
+	test with wrong types
+	---------------------
+
+>>> lazy_matrix_mul(17, [[1, 2, -3], [1, 5, 7]])
+	Traceback (most recent call last):
+		...
+			ValueError: matmul: Input operand 0 does not have enough dimensions (has 0, gufunc core with signature (n?,k),(k,m?)->(n?,m?) requires 1)
+
+			>>> lazy_matrix_mul([[4, 10], [2, 4]], "hello")
+			Traceback (most recent call last):
+				...
+					numpy.core._exceptions._UFuncNoLoopError: ufunc 'matmul' did not contain a loop with signature matching types (dtype('int64'), dtype('<U5')) -> None
+
+					test with list of wrong types
+					-----------------------------
+
+>>> lazy_matrix_mul([[1, -5, 5], False], [[2, -2, -5]])
+	Traceback (most recent call last):
+		...
+			ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+
+			>>> lazy_matrix_mul([[2, -3, 19]], [0.17, [1, 2, -4]])
+	Traceback (most recent call last):
+		...
+			ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+
+			test with empty lists
+			---------------------
+
+>>> lazy_matrix_mul([], [[1, 2, 3]])
+	Traceback (most recent call last):
+		...
+			ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 1 is different from 0)
+
+>>> lazy_matrix_mul([[1, 2, 3]], [])
+	Traceback (most recent call last):
+		...
+			ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 0 is different from 3)
+
+>>> lazy_matrix_mul([[1, 2, 3], []], [[2, 4], [6, 8]])
+	Traceback (most recent call last):
+		...
+			ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+
+			>>> lazy_matrix_mul([[2, 4], [6, 87]], [[], [1, 1, 1]])
+	Traceback (most recent call last):
+		...
+			ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+
+			test with elements not integer or floats
+			----------------------------------------
+
+			>>> lazy_matrix_mul([[2, 5], [1.5, "b"]], [[1, 6, 18]])
+			Traceback (most recent call last):
+				...
+					numpy.core._exceptions._UFuncNoLoopError: ufunc 'matmul' did not contain a loop with signature matching types (dtype('<U32'), dtype('int64')) -> None
+
+					>>> lazy_matrix_mul([[1, 16, 2]], [[False], [1, 5, 7]])
+	Traceback (most recent call last):
+		...
+			ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+
+			test with list of different row size
+			------------------------------------
+
+>>> lazy_matrix_mul([[1, 2, 3], [4, 5, 6], [7, 8]], [[1, 2]])
+	Traceback (most recent call last):
+		...
+			ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (3,) + inhomogeneous part.
+
+			>>> lazy_matrix_mul([[1, 2]], [[1, 2, 3], [1], [1, 2]])
+	Traceback (most recent call last):
+		...
+			ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (3,) + inhomogeneous part.
+
+			test with matrixes that cannot be multiplied
+			--------------------------------------------
+
+>>> lazy_matrix_mul([[1, 2, 3], [4, 5, 6]], [[2, 4], [6, 8]])
+	Traceback (most recent call last):
+		...
+			ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 2 is different from 3)
+
+	missing arguments
+>>> lazy_matrix_mul([[1], [2], [3]])
+	Traceback (most recent call last):
+		...
+	TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
+									      >>> lazy_matrix_mul()
+												   Traceback (most recent call last):
+													   ...
+														   TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
