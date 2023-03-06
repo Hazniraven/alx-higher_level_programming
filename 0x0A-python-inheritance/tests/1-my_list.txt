@@ -1,0 +1,84 @@
+The ``1-my_list`` module
+========================
+
+Using ``MyList``
+first import the ``MyList from the ``1-my_list`` module
+	>>> MyList = __import__("1-my_list").MyList
+
+and write test cases
+	>>> list1 = MyList()
+        >>> list1.append(2)
+	>>> list1.append(4)
+	>>> list1.append(17)
+	>>> list1.append(0)
+	>>> print(list1)
+	[2, 4, 17, 0]
+	>>> list1.print_sorted()
+	[0, 2, 4, 17]
+	>>> print(list1)
+	[2, 4, 17, 0]
+
+	>>> list1 = MyList()
+	>>> list1.append(12)
+	>>> list1.append(-3)
+	>>> list1.append(-117)
+	>>> list1.append(0)
+	>>> print(list1)
+	[12, -3, -117, 0]
+	>>> list1.print_sorted()
+	[-117, -3, 0, 12]
+	>>> print(list1)
+	[12, -3, -117, 0]
+
+	>>> list1 = MyList()
+	>>> list1.append(2)
+	>>> list1.append(2)
+	>>> list1.append(2)
+	>>> list1.append(2)
+	>>> print(list1)
+	[2, 2, 2, 2]
+	>>> list1.print_sorted()
+	[2, 2, 2, 2]
+	>>> print(list1)
+	[2, 2, 2, 2]
+
+	>>> list1 = MyList()
+	>>> list1.append(-5)
+	>>> list1.append(-5)
+	>>> list1.append(-5)
+	>>> list1.append(-5)
+	>>> print(list1)
+	[-5, -5, -5, -5]
+	>>> list1.print_sorted()
+	[-5, -5, -5, -5]
+	>>> print(list1)
+	[-5, -5, -5, -5]
+
+	>>> list1 = MyList()
+	>>> list1.append(-17)
+	>>> list1.append(-4)
+	>>> list1.append(-11)
+	>>> list1.append(-5)
+	>>> print(list1)
+	[-17, -4, -11, -5]
+	>>> list1.print_sorted()
+	[-17, -11, -5, -4]
+	>>> print(list1)
+	[-17, -4, -11, -5]
+
+	>>> list1 = MyList()
+	>>> print(list1)
+	[]
+	>>> list1.print_sorted()
+	[]
+	>>> print(list1)
+	[]
+
+	>>> list1 = MyList()
+	>>> list1.append(1)
+	>>> print(list1)
+	[1]
+	>>> list1.print_sorted()
+	[1]
+	>>> print(list1)
+	[1]
